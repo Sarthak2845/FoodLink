@@ -1,0 +1,83 @@
+/* Global theme variables and utilities */
+:root {
+  /* Primary Colors */
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  
+  /* Blue Colors */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  
+  /* Cyan Colors */
+  --color-cyan-50: #ecfeff;
+  
+  /* Indigo Colors */
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-900: #312e81;
+  
+  /* Gray Colors */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-300: #d1d5db;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+}
+
+/* Dark mode color overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #d1d5db;
+    --color-bg-primary: #111827;
+    --color-bg-secondary: #1f2937;
+  }
+}
+
+/* Light mode color overrides */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-text-primary: #111827;
+    --color-text-secondary: #4b5563;
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f9fafb;
+  }
+}
+
+/* Common component styles */
+.btn-primary {
+  @apply bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply border-2 border-emerald-600 text-emerald-600 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all duration-200;
+}
+
+.card {
+  @apply bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 dark:border-gray-700;
+}
+
+.input-field {
+  @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white;
+}
+
+.page-gradient {
+  @apply min-h-screen bg-gradient-to-br from-cyan-50 via-blue-100 to-indigo-200 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900;
+}
+
+.text-primary {
+  @apply text-gray-900 dark:text-white;
+}
+
+.text-secondary {
+  @apply text-gray-600 dark:text-gray-300;
+}
+
+.loading-spinner {
+  @apply animate-spin rounded-full h-32 w-32 border-b-2 border-emerald-600;
+}
