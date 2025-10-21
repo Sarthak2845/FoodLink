@@ -17,6 +17,9 @@ export default function HomeNav() {
         <Link to="/how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-600 hover:after:w-full after:transition-all after:duration-300">
           How It Works
         </Link>
+        <Link to="/leaderboard" className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-600 hover:after:w-full after:transition-all after:duration-300">
+          🏆 Leaderboard
+        </Link>
         <Link to="/for-ngo" className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-600 hover:after:w-full after:transition-all after:duration-300">
           For NGOs
         </Link>

@@ -1,6 +1,34 @@
 import { MdPhoneAndroid } from "react-icons/md";
 import { FaHandshake, FaHeart } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { AppwriteService } from "../appwrite/appwrite";
+
 const Home = () => {
+  const [stats, setStats] = useState({
+    totalDonations: 0,
+    activeDonors: 0,
+    partnerNGOs: 0,
+    estimatedMeals: 0,
+    peopleFed: 0
+  });
+  const [loading, setLoading] = useState(true);
+  const appwriteService = new AppwriteService();
+
+  useEffect(() => {
+    loadStats();
+  }, []);
+
+  const loadStats = async () => {
+    try {
+      const data = await appwriteService.getStats();
+      setStats(data);
+    } catch (error) {
+      console.error('Error loading stats:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
       <main className="px-6 py-20 max-w-7xl mx-auto">
         <div className="text-center mb-16">
@@ -21,18 +49,30 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          <div className="text-center p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl shadow-lg">
-            <div className="text-3xl font-bold text-emerald-600 mb-2">828M+</div>
-            <div className="text-gray-600 dark:text-gray-300">People face hunger globally</div>
+        <div className="grid md:grid-cols-4 gap-6 mb-20">
+          <div className="text-center p-6 bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-200 dark:border-emerald-700">
+            <div className="text-4xl font-bold text-emerald-600 mb-2">
+              {loading ? '...' : stats.estimatedMeals.toLocaleString()}
+            </div>
+            <div className="text-emerald-700 dark:text-emerald-300 font-medium">Meals Shared</div>
           </div>
-          <div className="text-center p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl shadow-lg">
-            <div className="text-3xl font-bold text-blue-600 mb-2">1.3B</div>
-            <div className="text-gray-600 dark:text-gray-300">Tons of food wasted annually</div>
+          <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-200 dark:border-blue-700">
+            <div className="text-4xl font-bold text-blue-600 mb-2">
+              {loading ? '...' : stats.activeDonors}
+            </div>
+            <div className="text-blue-700 dark:text-blue-300 font-medium">Active Donors</div>
           </div>
-          <div className="text-center p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl shadow-lg">
-            <div className="text-3xl font-bold text-purple-600 mb-2">Zero</div>
-            <div className="text-gray-600 dark:text-gray-300">Cost to make a difference</div>
+          <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 backdrop-blur-sm rounded-2xl shadow-lg border border-purple-200 dark:border-purple-700">
+            <div className="text-4xl font-bold text-purple-600 mb-2">
+              {loading ? '...' : stats.partnerNGOs}
+            </div>
+            <div className="text-purple-700 dark:text-purple-300 font-medium">Partner NGOs</div>
+          </div>
+          <div className="text-center p-6 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 backdrop-blur-sm rounded-2xl shadow-lg border border-orange-200 dark:border-orange-700">
+            <div className="text-4xl font-bold text-orange-600 mb-2">
+              {loading ? '...' : stats.peopleFed.toLocaleString()}
+            </div>
+            <div className="text-orange-700 dark:text-orange-300 font-medium">People Fed</div>
           </div>
         </div>
 

@@ -10,6 +10,7 @@ import DonatePage from "./pages/DonatePage"
 import BrowseDonations from "./pages/BrowseDonations"
 import MyDonations from "./pages/MyDonations"
 import NGOProfile from "./pages/NGOProfile"
+import Leaderboard from "./pages/Leaderboard"
 import ProtectedRoute from "./components/ProtectedRoute"
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
      <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/how-it-works" element={<HowItWorks/>}/>
+      <Route path="/leaderboard" element={<Leaderboard/>}/>
       <Route path="/for-ngo" element={<ForNGO/>}/>
       <Route path="/contact" element={<Contacts/>}/>
       <Route path="/auth" element={<Auth/>}/>
